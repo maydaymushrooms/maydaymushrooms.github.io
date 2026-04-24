@@ -1,11 +1,61 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Logo from '../components/Logo.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<section class="landing-message">
+			<Logo></Logo>
+			<h1>May Day Mushrooms</h1>
+			<p>Coming soon.</p>
+			<p>For inquiries:</p>
+			<p class="contact italic">maydaymushrooms (at) <span>gmail.</span>proton.<span>com</span>me</p>
+		</section>
+		<footer>
+			<p>May Day Mushrooms L.W.C.A. 2026</p>
+		</footer>
+	</main>
 </Layout>
+
+<style>
+	main {
+		height: 100%;
+		width: 100%;
+		display: grid;
+		color: #111310;
+		font-family: "Inter", sans-serif;
+		font-optical-sizing: auto;
+		font-weight: 300;
+		font-style: normal;
+	}
+
+	.landing-message {
+		text-align: center;
+		align-self: center;
+		justify-self: center;
+		height: fit-content;
+		width: fit-content;
+	}
+
+	.italic {
+		font-style: italic;
+	}
+
+	.contact {
+		margin-top: -0.6rem;
+	}
+
+	.contact > span {
+		display: none;
+	}
+
+	footer {
+		font-size: 0.7rem;
+		position: fixed;
+		bottom: 5px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+</style>
