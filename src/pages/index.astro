@@ -1,50 +1,149 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Logo from '../components/Logo.astro';
+import { Image } from 'astro:assets';
 
+import Layout from '@layouts/Layout.astro';
+import Logo from '@components/Logo.astro';
+
+import WordmarkDesktop from '@assets/images/Wordmark-Desktop.svg';
+import WordmarkMobile from '@assets/images/Wordmark-Mobile.svg';
+
+import MushroomLionsMane from '@assets/images/Asset-Mushroom-LionsMane.png';
+import MushroomOyster from '@assets/images/Asset-Mushroom-Oyster.png';
 ---
 
 <Layout>
 	<main>
-		<section class="landing-message">
-			<Logo></Logo>
-			<h1>May Day Mushrooms</h1>
-			<p>Coming soon.</p>
-			<p>For inquiries:</p>
-			<p class="contact italic">maydaymushrooms (at) <span>gmail.</span>proton.<span>com</span>me</p>
+		<section  class="landing-section">
+			<div class="image-container-oyster">
+				<Image src={MushroomOyster} class="image-oyster" alt="illustration of an oyster mushroom" />
+			</div>
+			<div class="image-container-lionsmane">
+				<Image src={MushroomLionsMane} class="image-lionsmane" alt="illustration of a lion's mane mushroom" />
+			</div>
+			<div class="wordmark-container">
+				<WordmarkMobile class="wordmark-mobile" />
+				<WordmarkDesktop class="wordmark-desktop" />
+			</div>
+				
 		</section>
-		<footer>
-			<p>May Day Mushrooms L.W.C.A. 2026</p>
-		</footer>
+		<section class="content-section">
+			<div class="contact-container">
+				<h1>Our Mushrooms</h1>
+				<h2>Oyster</h2>
+				<h2>Lion's Mane</h2>
+			</div>
+		</section>
+		<section class="content-section">
+			<div class="contact-container">
+				<h1>Contact</h1>
+				<p class="contact italic">maydaymushrooms (at) <span>gmail.</span>proton.<span>com</span>me</p>
+			</div>
+		</section>
 	</main>
+	<footer>
+		<p>May Day Mushrooms L.W.C.A. 2026</p>
+	</footer>
 </Layout>
 
 <style>
 	main {
-		height: 100%;
-		width: 100%;
-		display: grid;
 		color: #111310;
 		font-family: "Inter", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 300;
 		font-style: normal;
+		min-height: 100vh;
+		max-width: 85vw;
+		margin: 0 auto;
+		display: grid;
 	}
 
-	.landing-message {
-		text-align: center;
-		align-self: center;
-		justify-self: center;
+	main > section:last-child {
+		margin-bottom: 10vh;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		color: #ff623f;
+	}
+
+	.landing-section {
+		height: 100vh;
+		display: grid;
+		margin-bottom: 20vh;
+		justify-items: center;
+		text-align: center;	}
+
+	.content-section {
+		display: grid;
+		align-items: start;
+		justify-items: start;
+	}
+
+	.contact-container {
 		height: fit-content;
 		width: fit-content;
 	}
 
-	.italic {
-		font-style: italic;
+	.wordmark-container {
+		height: fit-content;
+		z-index: 1;
+		margin-top: -18vh;
+		align-self: center;
+		justify-self: center;
+		width: 60vw;
+		max-width: 50vh;
+
 	}
 
-	.contact {
-		margin-top: -0.6rem;
+	.wordmark-desktop {
+		display: none;
+	}
+
+	.image-container-oyster {
+		position: absolute;
+		bottom: -20vh;
+		left: 0;
+		width: 50vw;
+		max-width: 40vh;
+		height: 55vh;
+	}
+
+	.image-container-lionsmane {
+		position: absolute;
+		bottom: -20vh;
+		right: 0;
+		width: 45vw;
+		max-width: 40vh;
+		height: 60vh;
+	}
+
+	.image-oyster, .image-lionsmane {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.image-oyster {
+		object-position: top right;
+	}
+
+	.image-lionsmane {
+		object-position: top left;
+	}
+
+	.landing-message {
+		display: grid;
+		justify-items: center;
+		text-align: center;
+		align-self: center;
+		justify-self: center;
+		width: 60vw;
+		max-width: 50vh;
+	}
+
+	.italic {
+		font-style: italic;
 	}
 
 	.contact > span {
@@ -53,10 +152,63 @@ import Logo from '../components/Logo.astro';
 
 	footer {
 		font-size: 0.7rem;
-		position: fixed;
-		bottom: 5px;
-		left: 50%;
-		transform: translateX(-50%);
 		text-align: center;
+	}
+
+	@media (min-aspect-ratio: 1/1) {
+		.wordmark-desktop {
+			display: inherit;
+		}
+
+		.wordmark-mobile {
+			display: none;
+		}
+
+		.wordmark-container {
+			height: fit-content;
+			width: 90%;
+			max-width: 70vh;
+			z-index: 1;
+			align-self: end;
+			margin-bottom: 5vh;
+		}
+
+		.image-container-oyster {
+			position: absolute;
+			bottom: -10vh;
+			left: -5vw;
+			top: 0;
+			max-width: 45vw;
+			height: auto
+		}
+
+		.image-container-lionsmane {
+			position: absolute;
+			bottom: -10vh;
+			right: -5vw;
+			top: 0;
+			max-width: 35vw;
+			height: auto
+		}
+
+		.image-oyster, .image-lionsmane {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		.image-oyster {
+			object-position: top right;
+		}
+
+		.image-lionsmane {
+			object-position: top left;
+		}
+
+		.content-section {
+			width: 40%;
+			align-self: center;
+			justify-self: center;
+		}
 	}
 </style>
