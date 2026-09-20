@@ -30,13 +30,24 @@ import MushroomOyster from '@assets/images/Asset-Mushroom-Oyster.png';
 			<div class="contact-container">
 				<h1>Our Mushrooms</h1>
 				<h2>Oyster</h2>
+				<p>Vibrant, savory, meaty. Firm yet tender from cap to stem.</p>
 				<h2>Lion's Mane</h2>
+				<p>Mild, tender, brain-boosting. A flavor often compared to lobster or crab.</p>
+				<h2>Chestnut</h2>
+				<p>Rich, nutty, earthy. A pleasantly firm texture even after cooking.</p>
+			</div>
+		</section>
+		<section class="content-section">
+			<div class="content-container">
+				<h1>About Us</h1>
+				<p>May Day Mushrooms is a cooperatively-run mushroom cultivation business located at <a href="https://www.insidetheplant.com/">The Plant</a> in the Back of the Yards neighborhood of Chicago. We grow gourmet mushrooms for restaurants, grocers, and mushroom-lovers in Chicago and beyond.</p>
 			</div>
 		</section>
 		<section class="content-section">
 			<div class="contact-container">
 				<h1>Contact</h1>
-				<p class="contact italic">maydaymushrooms (at) <span>gmail.</span>proton.<span>com</span>me</p>
+				<p>Want us to provide mushrooms for your business? For this or any other inquiries, reach out to:</p>
+				<p id="contact" class="contact italic bold">maydaymushrooms@<!--gmail.-->proton.<!--com-->me</p>
 			</div>
 		</section>
 	</main>
@@ -46,9 +57,12 @@ import MushroomOyster from '@assets/images/Asset-Mushroom-Oyster.png';
 </Layout>
 
 <style>
+	* {
+		font-family: "Inter", sans-serif;
+	}
+
 	main {
 		color: #111310;
-		font-family: "Inter", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 300;
 		font-style: normal;
@@ -78,6 +92,12 @@ import MushroomOyster from '@assets/images/Asset-Mushroom-Oyster.png';
 		display: grid;
 		align-items: start;
 		justify-items: start;
+	}
+
+	.content-section a {
+		text-decoration: underline dotted;
+		font-weight: normal;
+		color: #ff623f;
 	}
 
 	.contact-container {
@@ -146,6 +166,10 @@ import MushroomOyster from '@assets/images/Asset-Mushroom-Oyster.png';
 		font-style: italic;
 	}
 
+	.bold {
+		font-weight: bold;
+	}
+
 	.contact > span {
 		display: none;
 	}
@@ -212,3 +236,12 @@ import MushroomOyster from '@assets/images/Asset-Mushroom-Oyster.png';
 		}
 	}
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function ()
+{
+	const email = document.getElementById('contact');
+
+	email.textContent = 'maydaymushrooms@proton.me';
+});
+</script>
