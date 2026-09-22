@@ -1,14 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Logo from '../components/Logo.astro';
+import Layout from '@layouts/Layout.astro';
 
+import { Image } from 'astro:assets';
+
+import WordmarkDesktop from '@assets/Wordmark-Desktop.svg';
+import WordmarkMobile from '@assets/Wordmark-Mobile.svg';
+
+import ImageLionsMane from '@assets/Asset-Mushroom-LionsMane.png';
+import ImageOyster from '@assets/Asset-Mushroom-Oyster.png';
 ---
 
 <Layout>
 	<main>
-		<section class="landing-message">
-			<Logo></Logo>
-			<h1>May Day Mushrooms</h1>
+		<section class="landing-section">
+			<Image class="landing-image-lionsmane" src={ImageLionsMane} alt="a lion's mane mushroom" />
+			<Image class="landing-image-oyster" src={ImageOyster} alt="an oyster mushroom" />
+			<div class="wordmark-container">
+				<WordmarkMobile class="wordmark-mobile"></WordmarkMobile>
+				<WordmarkDesktop class="wordmark-desktop"></WordmarkDesktop>
+			</div>
 			<p>Coming soon.</p>
 			<p>For inquiries:</p>
 			<p class="contact italic">maydaymushrooms (at) <span>gmail.</span>proton.<span>com</span>me</p>
@@ -20,6 +30,8 @@ import Logo from '../components/Logo.astro';
 </Layout>
 
 <style>
+
+
 	main {
 		height: 100%;
 		width: 100%;
@@ -31,7 +43,41 @@ import Logo from '../components/Logo.astro';
 		font-style: normal;
 	}
 
-	.landing-message {
+	.landing-image-lionsmane {
+		display: block;
+		position: absolute;
+		width: 30vw;
+		height: auto;
+		right: 0;
+		bottom: 0;
+	}	
+
+	.landing-image-oyster {
+		display: block;
+		position: absolute;
+		width: 30vw;
+		height: auto;
+		left: 0;
+		bottom: 0;
+	}
+
+	.wordmark-container {
+		width: 30vw;
+		max-height: 50vh;
+	}
+
+	.wordmark-desktop {
+		display: none;
+	}
+
+	.wordmark-mobile {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.landing-section {
+		display: grid;
+		justify-items: center;
 		text-align: center;
 		align-self: center;
 		justify-self: center;
