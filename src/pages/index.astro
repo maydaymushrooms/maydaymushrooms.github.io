@@ -1,96 +1,173 @@
 ---
-import Layout from '@layouts/Layout.astro';
-
 import { Image } from 'astro:assets';
 
-import WordmarkDesktop from '@assets/Wordmark-Desktop.svg';
-import WordmarkMobile from '@assets/Wordmark-Mobile.svg';
+import Layout from '@layouts/Layout.astro';
+import Logo from '@components/Logo.astro';
 
-import ImageLionsMane from '@assets/Asset-Mushroom-LionsMane.png';
-import ImageOyster from '@assets/Asset-Mushroom-Oyster.png';
+import WordmarkDesktop from '@assets/images/Wordmark-Desktop.svg';
+import WordmarkMobile from '@assets/images/Wordmark-Mobile.svg';
+
+import MushroomLionsMane from '@assets/images/Asset-Mushroom-LionsMane.png';
+import MushroomOyster from '@assets/images/Asset-Mushroom-Oyster.png';
 ---
 
 <Layout>
 	<main>
-		<section class="landing-section">
-			<Image class="landing-image-lionsmane" src={ImageLionsMane} alt="a lion's mane mushroom" />
-			<Image class="landing-image-oyster" src={ImageOyster} alt="an oyster mushroom" />
-			<div class="wordmark-container">
-				<WordmarkMobile class="wordmark-mobile"></WordmarkMobile>
-				<WordmarkDesktop class="wordmark-desktop"></WordmarkDesktop>
+		<section  class="landing-section">
+			<div class="image-container-oyster">
+				<Image src={MushroomOyster} class="image-oyster" alt="illustration of an oyster mushroom" />
 			</div>
-			<p>Coming soon.</p>
-			<p>For inquiries:</p>
-			<p class="contact italic">maydaymushrooms (at) <span>gmail.</span>proton.<span>com</span>me</p>
+			<div class="image-container-lionsmane">
+				<Image src={MushroomLionsMane} class="image-lionsmane" alt="illustration of a lion's mane mushroom" />
+			</div>
+			<div class="wordmark-container">
+				<WordmarkMobile class="wordmark-mobile" />
+				<WordmarkDesktop class="wordmark-desktop" />
+			</div>
+				
 		</section>
-		<footer>
-			<p>May Day Mushrooms L.W.C.A. 2026</p>
-		</footer>
+		<section class="content-section">
+			<div class="contact-container">
+				<h1>Our Mushrooms</h1>
+				<h2>Oyster</h2>
+				<p>Vibrant, savory, meaty. Firm yet tender from cap to stem.</p>
+				<h2>Lion's Mane</h2>
+				<p>Mild, tender, brain-boosting. A flavor often compared to lobster or crab.</p>
+				<h2>Chestnut</h2>
+				<p>Rich, nutty, earthy. A pleasantly firm texture even after cooking.</p>
+			</div>
+		</section>
+		<section class="content-section">
+			<div class="content-container">
+				<h1>About Us</h1>
+				<p>May Day Mushrooms is a cooperatively-run mushroom cultivation business located at <a href="https://www.insidetheplant.com/">The Plant</a> in the Back of the Yards neighborhood of Chicago. We grow gourmet mushrooms for restaurants, grocers, and mushroom-lovers in Chicago and beyond.</p>
+			</div>
+		</section>
+		<section class="content-section">
+			<div class="contact-container">
+				<h1>Contact</h1>
+				<p>Want us to provide mushrooms for your business? For this or any other inquiries, reach out to:</p>
+				<p id="contact" class="contact italic bold">maydaymushrooms@<!--gmail.-->proton.<!--com-->me</p>
+			</div>
+		</section>
 	</main>
+	<footer>
+		<p>May Day Mushrooms L.W.C.A. 2026</p>
+	</footer>
 </Layout>
 
 <style>
-
+	* {
+		font-family: "Inter", sans-serif;
+	}
 
 	main {
-		height: 100%;
-		width: 100%;
-		display: grid;
 		color: #111310;
-		font-family: "Inter", sans-serif;
 		font-optical-sizing: auto;
 		font-weight: 300;
 		font-style: normal;
+		min-height: 100vh;
+		max-width: 85vw;
+		margin: 0 auto;
+		display: grid;
 	}
 
-	.landing-image-lionsmane {
-		display: block;
-		position: absolute;
-		width: 30vw;
-		height: auto;
-		right: 0;
-		bottom: 0;
-	}	
+	main > section:last-child {
+		margin-bottom: 10vh;
+	}
 
-	.landing-image-oyster {
-		display: block;
-		position: absolute;
-		width: 30vw;
-		height: auto;
-		left: 0;
-		bottom: 0;
+	h1 {
+		font-size: 2.5rem;
+		color: #ff623f;
+	}
+
+	.landing-section {
+		height: 100vh;
+		display: grid;
+		margin-bottom: 20vh;
+		justify-items: center;
+		text-align: center;	}
+
+	.content-section {
+		display: grid;
+		align-items: start;
+		justify-items: start;
+	}
+
+	.content-section a {
+		text-decoration: underline dotted;
+		font-weight: normal;
+		color: #ff623f;
+	}
+
+	.contact-container {
+		height: fit-content;
+		width: fit-content;
 	}
 
 	.wordmark-container {
-		width: 30vw;
-		max-height: 50vh;
+		height: fit-content;
+		z-index: 1;
+		margin-top: -18vh;
+		align-self: center;
+		justify-self: center;
+		width: 60vw;
+		max-width: 50vh;
+
 	}
 
 	.wordmark-desktop {
 		display: none;
 	}
 
-	.wordmark-mobile {
-		max-width: 100%;
-		max-height: 100%;
+	.image-container-oyster {
+		position: absolute;
+		bottom: -20vh;
+		left: 0;
+		width: 50vw;
+		max-width: 40vh;
+		height: 55vh;
 	}
 
-	.landing-section {
+	.image-container-lionsmane {
+		position: absolute;
+		bottom: -20vh;
+		right: 0;
+		width: 45vw;
+		max-width: 40vh;
+		height: 60vh;
+	}
+
+	.image-oyster, .image-lionsmane {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
+
+	.image-oyster {
+		object-position: top right;
+	}
+
+	.image-lionsmane {
+		object-position: top left;
+	}
+
+	.landing-message {
 		display: grid;
 		justify-items: center;
 		text-align: center;
 		align-self: center;
 		justify-self: center;
-		height: fit-content;
-		width: fit-content;
+		width: 60vw;
+		max-width: 50vh;
 	}
 
 	.italic {
 		font-style: italic;
 	}
 
-	.contact {
-		margin-top: -0.6rem;
+	.bold {
+		font-weight: bold;
 	}
 
 	.contact > span {
@@ -99,10 +176,72 @@ import ImageOyster from '@assets/Asset-Mushroom-Oyster.png';
 
 	footer {
 		font-size: 0.7rem;
-		position: fixed;
-		bottom: 5px;
-		left: 50%;
-		transform: translateX(-50%);
 		text-align: center;
 	}
+
+	@media (min-aspect-ratio: 1/1) {
+		.wordmark-desktop {
+			display: inherit;
+		}
+
+		.wordmark-mobile {
+			display: none;
+		}
+
+		.wordmark-container {
+			height: fit-content;
+			width: 90%;
+			max-width: 70vh;
+			z-index: 1;
+			align-self: end;
+			margin-bottom: 5vh;
+		}
+
+		.image-container-oyster {
+			position: absolute;
+			bottom: -10vh;
+			left: -5vw;
+			top: 0;
+			max-width: 45vw;
+			height: auto
+		}
+
+		.image-container-lionsmane {
+			position: absolute;
+			bottom: -10vh;
+			right: -5vw;
+			top: 0;
+			max-width: 35vw;
+			height: auto
+		}
+
+		.image-oyster, .image-lionsmane {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+
+		.image-oyster {
+			object-position: top right;
+		}
+
+		.image-lionsmane {
+			object-position: top left;
+		}
+
+		.content-section {
+			width: 40%;
+			align-self: center;
+			justify-self: center;
+		}
+	}
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function ()
+{
+	const email = document.getElementById('contact');
+
+	email.textContent = 'maydaymushrooms@proton.me';
+});
+</script>
